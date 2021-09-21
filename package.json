@@ -1,0 +1,32 @@
+{
+    "name": "clockify-importer",
+    "description": "command line and cron importer from toggl into clockify",
+    "version": "0.2.0",
+    "repository": "https://github.com/mikerourke/toggl-to-clockify.git",
+    "author": "Mike Rourke <mike.w.rourke@gmail.com>",
+    "keywords": [
+        "toggl",
+        "clockify",
+        "importer"
+    ],
+    "license": "MIT",
+    "private": false,
+    "engines": {
+        "node": ">=15.13"
+    },
+    "devDependencies": {
+        "@types/node": "^16.9.4",
+        "typescript": "^4.4.3"
+    },
+    "include": [
+        "scripts/**/*"
+    ],
+    "scripts": {
+        "build": "tsc --build",
+        "clean": "tsc --build --clean",
+        "lint": "tslint -c tslint.json \"src/**/*.ts\""
+    },
+    "dependencies": {
+        "dotenv": "^10.0.0"
+    }
+}
