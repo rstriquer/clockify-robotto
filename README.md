@@ -1,6 +1,6 @@
-# clockify-wrapper
+# clockify-robotto
 
-Command line to use in cron unix to export time control entries from clockify
+Command line bot to use in cron unix to export time control entries from clockify
 
 ## Target
 
