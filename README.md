@@ -1,2 +1,7 @@
-# clockify-importer
-command line and cron importer from toggl into clockify
+# clockify-wrapper
+
+Command line to use in cron unix to export time control entries from clockify
+
+## Target
+
+Provide the use of clockify to serve customers whom use another time control tool
