@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "d8532215-392d-4d64-acb2-e1bc1a2bd825",
+		"name": "Clockify",
+		"description": "Based on doc from\nhttps://clockify.me/developers-api\n\n- Importa o ID da tarefa no início do descritivo da tarefa\n- Salva os IDs de um e do outro em um arquivo CSV local; faz uso de busca por arvore binária para encontrar o ID dos TASKs, ID do toggl é o ID origem, salva horários e descritivo das tarefas no local com o ID do clockify, se estiver diferente atualiza no clockify, do contrário segue;\n- Ter tarefa força sincronizar (por datas) que vai no toggl, pega as tarefas, valida com o arquivo local, depois vai no clockify e checa se está igual a partir do ID das tarefas;\n\nConfig\n{\n  \"billable\": \"true\",\n  \"projectId\": \"614627779eb0753d0e35c5f3\",\n  \"clientIds\": [\n      \"6146269d4230233ecb77edde\"\n  ],\n  \"tagIds\": [\n      \"5c5c7a54b079871c518fb466\",\n      \"614644d49eb0753d0e35f599\"\n  ]\n}",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Logged User definitions",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.clockify.me/api/v1/user",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clockify",
+						"me"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "time-entries",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.clockify.me/api/v1/workspaces/{{workspaceId}}/user/{{userId}}/time-entries?description=SMP-6221",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clockify",
+						"me"
+					],
+					"path": [
+						"api",
+						"v1",
+						"workspaces",
+						"{{workspaceId}}",
+						"user",
+						"{{userId}}",
+						"time-entries"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2021-09-18T00:00:00.000Z",
+							"disabled": true
+						},
+						{
+							"key": "end",
+							"value": "2021-09-19T00:00:00.000Z",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "SMP-6221",
+							"description": "recebe parte do descritivo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add time-entries",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start\": \"2021-09-18T12:00:00.000Z\",\n  \"billable\": \"true\",\n  \"description\": \"SMP-6221 Corrigir problemas de segurança na consulta de serviços do cliente\",\n  \"projectId\": \"614627779eb0753d0e35c5f3\",\n  \"end\": \"2021-09-18T12:30:00.000Z\",\n  \"tagIds\": [\n      \"5c5c7a54b079871c518fb466\",\n      \"614644d49eb0753d0e35f599\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.clockify.me/api/v1/workspaces/{{workspaceId}}/time-entries",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clockify",
+						"me"
+					],
+					"path": [
+						"api",
+						"v1",
+						"workspaces",
+						"{{workspaceId}}",
+						"time-entries"
+					]
+				},
+				"description": "Para o tempo somar o tempo atual e subtrair 3h"
+			},
+			"response": []
+		},
+		{
+			"name": "get projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.clockify.me/api/v1/workspaces/{{workspaceId}}/projects",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clockify",
+						"me"
+					],
+					"path": [
+						"api",
+						"v1",
+						"workspaces",
+						"{{workspaceId}}",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get TAGs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.clockify.me/api/v1/workspaces/{{workspaceId}}/tags",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clockify",
+						"me"
+					],
+					"path": [
+						"api",
+						"v1",
+						"workspaces",
+						"{{workspaceId}}",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.clockify.me/api/v1/workspaces/{{workspaceId}}/clients",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clockify",
+						"me"
+					],
+					"path": [
+						"api",
+						"v1",
+						"workspaces",
+						"{{workspaceId}}",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update time-entries",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"1920145560 SMP-6221 Corrigir problemas de segurança na consulta de serviços do cliente\",\n  \"start\": \"2021-09-18T12:00:00.000Z\",\n  \"end\": \"2021-09-18T12:35:00.000Z\",\n  \"billable\": \"true\",\n  \"projectId\": \"614627779eb0753d0e35c5f3\",\n  \"clientIds\": [\n      \"6146269d4230233ecb77edde\"\n  ],\n  \"tagIds\": [\n      \"5c5c7a54b079871c518fb466\",\n      \"614644d49eb0753d0e35f599\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.clockify.me/api/v1/workspaces/{{workspaceId}}/time-entries/61464575a7409c032308eaf6",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clockify",
+						"me"
+					],
+					"path": [
+						"api",
+						"v1",
+						"workspaces",
+						"{{workspaceId}}",
+						"time-entries",
+						"61464575a7409c032308eaf6"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-api-key",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "workspaceId",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}

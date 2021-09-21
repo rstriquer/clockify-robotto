@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "237d3b30-4ad5-48b9-8964-92478b9e148d",
+		"name": "toggl",
+		"description": "https://github.com/toggl/toggl_api_docs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Logged user definitions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.track.toggl.com/api/v8/me",
+					"protocol": "https",
+					"host": [
+						"api",
+						"track",
+						"toggl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v8",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Time entries",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.track.toggl.com/api/v8/time_entries?start_date=2021-03-10T15:42:46-03:00&end_date=2021-03-12T15:42:46-03:00",
+					"protocol": "https",
+					"host": [
+						"api",
+						"track",
+						"toggl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v8",
+						"time_entries"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2021-03-10T15:42:46-03:00",
+							"description": "Deve ser o mesmo timestamp do usuário"
+						},
+						{
+							"key": "end_date",
+							"value": "2021-03-12T15:42:46-03:00",
+							"description": "Deve ser o mesmo timestamp do usuário"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add time entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"time_entry\": {\n        \"description\": \"SMP-6221 Corrigir problemas de segurança na consulta de serviços do cliente 614664ada7409c032308f516\",\n        \"tags\": [],\n        \"duration-desc\": \"in seconds\",\n        \"duration\": \"3000\",\n        \"start\": \"2021-09-18T12:00:00Z\",\n        \"uid\": \"614664ada7409c032308f516\",\n        \"created_with\": \"postman\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.track.toggl.com/api/v8/time_entries",
+					"protocol": "https",
+					"host": [
+						"api",
+						"track",
+						"toggl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v8",
+						"time_entries"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
